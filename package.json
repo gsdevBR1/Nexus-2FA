@@ -29,7 +29,8 @@
     "test": "node tools/all-tests.mjs",
     "verify": "node tools/verify.mjs",
     "verify:package": "node tools/package-check.mjs",
-    "verify:encoding": "node tools/encoding-check.mjs"
+    "verify:encoding": "node tools/encoding-check.mjs",
+    "verify:public": "node tools/public-safety.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
