@@ -1,0 +1,348 @@
+/* Janela grande: grid de cards com spotlight, barra superior, rodapé. */
+
+.app-body {
+  min-height: 100vh;
+  background: var(--void);
+}
+
+.vshell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.vshell__gate {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.vbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(6, 9, 12, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.vbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-right: 8px;
+}
+
+.vbar__brand div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.vbar__brand b {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vbar__brand span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-4);
+  text-transform: uppercase;
+}
+
+.vbar__search {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+}
+
+.vbar__search > svg {
+  position: absolute;
+  left: 11px;
+  width: 13px;
+  height: 13px;
+  color: var(--text-4);
+  pointer-events: none;
+}
+
+.vbar__search input {
+  width: 100%;
+  height: 32px;
+  padding: 0 11px 0 32px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: rgba(5, 7, 10, 0.72);
+  color: var(--text);
+  font-size: 12.5px;
+}
+
+.vbar__search input::placeholder {
+  color: var(--text-4);
+}
+
+.vbar__search input:focus {
+  outline: none;
+  border-color: var(--acc-line);
+  box-shadow: 0 0 0 3px rgba(92, 242, 196, 0.07);
+}
+
+.vmain {
+  flex: 1;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 22px 34px;
+}
+
+.vsection {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0 2px 12px;
+}
+
+.vsection .eyebrow {
+  flex: 1;
+}
+
+.vsection em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-4);
+}
+
+.vgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  gap: 12px;
+}
+
+/* card */
+
+.vcard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 15px 11px !important;
+  border-radius: var(--r-md) !important;
+  border: 1px solid var(--line) !important;
+  background-color: rgba(10, 15, 20, 0.86) !important;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s;
+  min-height: 128px;
+}
+
+.vcard:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-2) !important;
+}
+
+.vcard:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.vcard__top {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.vcard__issuer {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vcard__code {
+  font-family: var(--mono);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: var(--acc);
+  text-shadow: 0 0 26px rgba(92, 242, 196, 0.22);
+  font-variant-numeric: tabular-nums;
+  margin: 1px 0 1px;
+}
+
+.vcard__code.is-masked {
+  color: var(--text-3);
+  letter-spacing: 0.14em;
+  text-shadow: none;
+}
+
+.vcard--warn .vcard__code {
+  color: var(--warn);
+  text-shadow: 0 0 26px rgba(245, 183, 99, 0.2);
+}
+
+.vcard__account {
+  font-size: 11px;
+  color: var(--text-4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vcard__bar {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line-2);
+  overflow: hidden;
+}
+
+.vcard__progress {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--acc);
+  transition: transform 0.4s linear, background 0.3s;
+  box-shadow: 0 0 8px rgba(92, 242, 196, 0.5);
+}
+
+.vcard--warn .vcard__progress {
+  background: var(--warn);
+  box-shadow: 0 0 8px rgba(245, 183, 99, 0.45);
+}
+
+.vcard__foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.vcard__time {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-4);
+}
+
+.vcard__copy {
+  height: 26px;
+  font-size: 11.5px;
+  padding: 0 7px;
+  opacity: 0.55;
+  transition: opacity 0.16s, color 0.16s;
+}
+
+.vcard:hover .vcard__copy {
+  opacity: 1;
+}
+
+/* vazio */
+
+.vempty {
+  max-width: 420px;
+  margin: 90px auto 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.vempty__glyph {
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--text-4);
+  margin-bottom: 2px;
+}
+
+.vempty h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 560;
+  letter-spacing: -0.015em;
+}
+
+.vempty p {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+
+/* rodapé */
+
+.vfoot {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 22px;
+  border-top: 1px solid var(--line);
+  background: rgba(6, 9, 12, 0.9);
+  backdrop-filter: blur(14px);
+}
+
+/* detalhe */
+
+.detail__code {
+  font-family: var(--mono);
+  font-size: 34px;
+  letter-spacing: 0.09em;
+  color: var(--acc);
+  text-align: center;
+  padding: 14px 0 6px;
+  text-shadow: 0 0 32px rgba(92, 242, 196, 0.28);
+  font-variant-numeric: tabular-nums;
+}
+
+.detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--text-4);
+  padding-bottom: 6px;
+}
+
+@media (max-width: 560px) {
+  .vbar {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+  }
+  .vbar__search {
+    order: 3;
+    max-width: none;
+    flex-basis: 100%;
+  }
+  .vmain {
+    padding: 16px 14px 30px;
+  }
+  .vgrid {
+    grid-template-columns: 1fr;
+  }
+}

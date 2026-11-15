@@ -1,0 +1,172 @@
+/* Telas de portão (criar / desbloquear) e medidor de força. */
+
+.gate {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 26px 20px 22px;
+  max-width: 372px;
+  margin: 0 auto;
+  animation: gatein 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes gatein {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.gate__mark {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: -2px;
+}
+
+.mark--lg {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 18px rgba(92, 242, 196, 0.35));
+}
+
+.padlock {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--acc);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.gate__head {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gate__head .h1 {
+  font-size: 22px;
+  letter-spacing: -0.028em;
+  margin-top: 1px;
+}
+
+.gate__head .sub {
+  line-height: 1.5;
+  max-width: 330px;
+}
+
+.gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 2px;
+}
+
+.gate__submit {
+  width: 100%;
+  height: 38px;
+  margin-top: 2px;
+}
+
+.gate__reset {
+  align-self: center;
+  font-size: 11.5px;
+  color: var(--text-4);
+}
+
+.gate__reset:hover {
+  color: var(--danger);
+}
+
+.hint--center {
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-4);
+  padding-top: 2px;
+}
+
+/* medidor de força */
+
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: -5px;
+}
+
+.meter span {
+  height: 2px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--line-2);
+  transition: background 0.25s;
+}
+
+.meter span.on {
+  background: var(--acc);
+  box-shadow: 0 0 10px rgba(92, 242, 196, 0.4);
+}
+
+.meter em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  min-width: 42px;
+  text-align: right;
+}
+
+/* botão com StarBorder: a borda viva substitui a do .btn */
+
+.star-border.btn--weld {
+  width: 100%;
+  height: 38px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  background: var(--acc) !important;
+  color: var(--acc-ink) !important;
+  border-radius: 7px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: transform 0.12s, filter 0.16s;
+}
+
+.star-border.btn--weld:hover {
+  filter: brightness(1.06);
+}
+
+.star-border.btn--weld:active {
+  transform: translateY(1px);
+}
+
+.star-border.btn--weld:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.star-border.btn--weld svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* titulo com ScrambleText: largura tabular para nao tremer durante o efeito */
+
+.decrypt {
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}

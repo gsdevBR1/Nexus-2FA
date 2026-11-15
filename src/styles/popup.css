@@ -1,0 +1,181 @@
+/* Shell do popup: 380x600 fixos.
+   NÃO usar vh/max-height aqui: num popup de extensão o viewport é dimensionado
+   a partir do conteúdo, então vh cria dependência circular e o corpo colapsa. */
+
+html:has(.popup-body) {
+  width: 380px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.popup-body {
+  width: 380px;
+  height: 600px;
+  overflow: hidden;
+  background: var(--void);
+}
+
+#root {
+  height: 100%;
+}
+
+.shell {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+.shell__main {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* barra superior com busca */
+
+.bar__search {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(9, 13, 18, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.search {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search svg {
+  position: absolute;
+  left: 9px;
+  width: 13px;
+  height: 13px;
+  color: var(--text-4);
+  pointer-events: none;
+}
+
+.search input {
+  width: 100%;
+  height: 30px;
+  padding: 0 9px 0 28px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: rgba(5, 7, 10, 0.7);
+  color: var(--text);
+  font-size: 12.5px;
+  transition: border-color 0.16s, background 0.16s;
+}
+
+.search input::placeholder {
+  color: var(--text-4);
+}
+
+.search input:focus {
+  outline: none;
+  border-color: var(--acc-line);
+  background: var(--ink);
+}
+
+.search__clear {
+  position: absolute;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  color: var(--text-4);
+}
+
+.search__clear:hover {
+  color: var(--text-2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search__clear svg {
+  position: static;
+  width: 12px;
+  height: 12px;
+}
+
+/* cabeçalho do conteúdo */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 12px 7px;
+}
+
+.section-head .eyebrow {
+  flex: 1;
+}
+
+.section-head em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--text-4);
+}
+
+/* anel de status no rodapé */
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--acc);
+  box-shadow: 0 0 8px var(--acc);
+  flex: none;
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+.status-dot.is-off {
+  background: var(--text-4);
+  box-shadow: none;
+  animation: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* busca vazia */
+
+.noresult {
+  padding: 26px 16px;
+  text-align: center;
+  color: var(--text-4);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.noresult b {
+  color: var(--text-2);
+  font-weight: 550;
+}

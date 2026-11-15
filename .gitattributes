@@ -1,2 +1,15 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Normaliza fim de linha para LF no repositório
+* text=auto eol=lf
+
+# Binários
+*.png binary
+*.woff2 binary
+*.ico binary
+*.zip binary
+
+# Linguagens
+*.jsx text
+*.js text
+*.css text
+*.json text
+*.md text

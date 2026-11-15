@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build (gerado por `npm run build`)
+dist/
+
+# Perfis e artefatos de teste
+.tmp-*/
+shots/
+*.png.bak
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Artefatos de empacotamento
+nexus-2fa.zip
+
+# Cofres locais — nunca commitar
+*.vault
+nexus.vault
+nexus.meta
