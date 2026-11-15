@@ -1,15 +1,18 @@
 # Normaliza fim de linha para LF no repositório
 * text=auto eol=lf
 
+# Arquivos com acentuação: força UTF-8 explicitamente para que editores,
+# git e GitHub não reinterpretem os bytes (evita mojibake tipo "ExtensÃ£o").
+*.md text working-tree-encoding=UTF-8 eol=lf
+*.json text working-tree-encoding=UTF-8 eol=lf
+*.js text working-tree-encoding=UTF-8 eol=lf
+*.jsx text working-tree-encoding=UTF-8 eol=lf
+*.mjs text working-tree-encoding=UTF-8 eol=lf
+*.css text working-tree-encoding=UTF-8 eol=lf
+*.html text working-tree-encoding=UTF-8 eol=lf
+
 # Binários
 *.png binary
 *.woff2 binary
 *.ico binary
 *.zip binary
-
-# Linguagens
-*.jsx text
-*.js text
-*.css text
-*.json text
-*.md text
