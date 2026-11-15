@@ -2,7 +2,7 @@
   "name": "nexus-2fa",
   "private": true,
   "version": "1.0.0",
-  "description": "ExtensÃ£o Chrome de 2FA com cofre local cifrado (AES-256-GCM). Sem servidor.",
+  "description": "Extensão Chrome de 2FA com cofre local cifrado (AES-256-GCM). Sem servidor.",
   "type": "module",
   "license": "MIT",
   "author": "Gustavo (gsdevBR1)",
